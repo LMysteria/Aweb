@@ -3,12 +3,28 @@ import './App.css';
 import React from "react";
 
 function App() {
-  const [data, setData] = React.useState(null);
+
+  const [data, setData] = React.useState("");
+
+  const getfetch = async () => {
+    const res = await fetch(`http://192.168.1.5:3001/api`,{
+      method: "get",
+    })
+    if(!res.ok){
+      throw new Error(`Http error ${res.status}`);
+    }
+    const fdata = await res.json()
+    console.log(fdata);
+    setData(fdata.message);
+  }
 
   React.useEffect(()=>{
-    fetch("/api")
-      .then((res)=>res.json())
-      .then((data)=>setData(data.message));
+    try {
+      getfetch();
+    } catch (error) {
+      console.error(error);
+    }
+
   }, []);
 
   return (
