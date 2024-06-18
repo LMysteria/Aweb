@@ -1,13 +1,13 @@
 const express = require('express');
 const MongoConnect = require('./MongoDB/MongoConnect.js')
 const app = express();
-const PORT = 500;
+const PORT = 3001;
 
 
 MongoConnect.run;
 
-app.get('/', (req, res)=>{
-    res.send("hello world!");
+app.get('/api', (req, res)=>{
+    res.json({message: "Hello from server!"});
 });
 
 //host website
