@@ -4,7 +4,11 @@
   "main": "app/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app/app.js"
+    "start": "nodemon app/app.js",
+    "build": "cd client && npm install && npm run build"
+  },
+  "engines":{
+    "node": "10.8.1"
   },
   "keywords": [],
   "author": "",
