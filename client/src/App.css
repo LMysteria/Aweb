@@ -1,38 +1,155 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  background-color: #111;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Menu{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  min-height: 50vh;
+  z-index: 100;
 }
 
-.App-link {
-  color: #61dafb;
+.Button{
+  padding: 40px 80px;
+  font-size: 2em;
+  border-radius: 20px;
+  border: none;
+  box-shadow: rgba(0,0,0,0.5) 0px 0px 60px;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Tetris{
+  position: relative;
+  display: flex;
+}
+
+.Board{
+  margin: 2vw auto;
+  display: grid;
+  grid-gap: 2px;
+  width: 20vw;
+  height: 40vw;
+  background-color: rgb(32,0,64);
+  border: 10px solid rgb(32,0,64);
+  border-radius: 10px;
+  box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+}
+
+.BoardCell {
+  width: auto;
+  border-radius: 6px;
+  position: relative;
+}
+
+aside{
+  right: 29vw;
+  height: auto;
+  width: fit-content;
+  text-align: left;
+  list-style-type: none;
+  color: rgba(255,255,255,1);
+  border-radius: 6px;
+  font-size: 1.6vw;
+  position: fixed;
+  margin: 3vw auto;
+}
+
+.GameStats .value{
+  font-size: 3vw;
+  margin-bottom: 0.5em;
+}
+
+.Preview{
+  background: rgb(32,0,64);
+  border: 3.3px solid rgba(0,0,0,0);
+  border-radius: 10px;
+  width: fit-content;
+  margin: 0.5vw 0;
+}
+
+.Preview-board{
+  display: grid;
+  grid-gap: 2px;
+  grid-template-rows: repeat(4,1fr);
+  grid-template-columns: repeat(4,1fr);
+  height: 8vw;
+  width: 8vw;
+}
+
+.tetromino{
+  border-top: 3px solid rgba(255,255,255,0.1);
+  border-left: 3px solid rgba(255,255,255,0.1);
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  border-right: 3px solid rgba(0,0,0,0.1);
+}
+
+.tetromino.ghost{
+  background-color: transparent;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+.tetromino .Sparkle {
+  position: absolute;
+  z-index: 10;
+  width: 6px;
+  height: 6px;
+  left: -2px;
+  top: -2px;
+  background-color: rgba(255,255,255,0.4);
+  border-radius: 4px 4px;
+}
+
+.tetromino.ghost .Sparkle{
+  opacity: 0;
+}
+
+.tetromino__i {
+  background-color: rgba(80,277,230,1);
+}
+
+.tetromino__j{
+  background-color: rgba(36,95,223,1);
+}
+
+.tetromino__l{
+  background-color: rgba(233,173,36,1);
+}
+
+.tetromino__o{
+  background-color: rgba(223,217,36,1);
+}
+
+.tetromino__s{
+  background-color: rgba(48,211,56,1);
+}
+
+.tetromino__t{
+  background-color: rgba(132,61,198,1);
+}
+
+.tetromino__z{
+  background-color: rgb(238, 78, 78);
+}
+
+.GameController{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  padding: 0;
+  background-color: transparent;
+  color: transparent;
+  cursor: context-menu;
+  
 }
