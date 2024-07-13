@@ -5,10 +5,10 @@ import {transferToBoard} from "../function/Tetrominoes";
 
 import BoardCell from "./BoardCell";
 
-const Preview = ({tetromino}) => {
-    const {shape, className} = tetromino;
+const HoldBoard = ({tetromino, hashold}) => {
+    const {shape} = tetromino;
     const board = buildBoard({rows: 4, columns: 4});
-
+    const className = hashold ? `tetromino hashold` : tetromino.className;
     board.rows= transferToBoard({
         className,
         isOccupied: false,
@@ -30,4 +30,4 @@ const Preview = ({tetromino}) => {
     )
 }
 
-export default React.memo(Preview);
+export default React.memo(HoldBoard);

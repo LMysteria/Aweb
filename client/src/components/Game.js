@@ -8,7 +8,6 @@ const Game = ({rows, columns}) => {
 
     const start = () => {
         resetGameOver();
-        console.log(`start gameOver is ${gameOver}`);
     }
     
     

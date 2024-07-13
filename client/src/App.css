@@ -62,7 +62,7 @@ aside{
   border-radius: 6px;
   font-size: 1.6vw;
   position: fixed;
-  margin: 3vw auto;
+  margin: 2vw auto;
 }
 
 .GameStats .value{
@@ -75,6 +75,7 @@ aside{
   border: 3.3px solid rgba(0,0,0,0);
   border-radius: 10px;
   width: fit-content;
+  height: fit-content;
   margin: 0.5vw 0;
 }
 
@@ -152,4 +153,14 @@ aside{
   color: transparent;
   cursor: context-menu;
   
+}
+
+.Hold{
+  position: fixed;
+  right: 60.3vw;
+  top: 1.6vw;
+}
+
+.hashold{
+  background-color: gray;
 }

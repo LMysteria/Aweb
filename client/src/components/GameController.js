@@ -28,11 +28,10 @@ const GameController = ({
     }
 
     const onKeyDown = ({code}) => {
-        console.log(code);
         const action = actionForKey(code);
-        if (action === Action.Left || action === Action.Right || actionIsDrop(action)){ 
-            if (actionIsDrop(action)) pauseDropTime();
-            handleInput({action});
+        if (action === Action.Left || action === Action.Right || action===Action.SoftDrop){ 
+            if (action===Action.SoftDrop) pauseDropTime();
+                handleInput({action});
             return;
         }
         if (hold) return;

@@ -6,7 +6,8 @@ export const Action = {
     HardDrop: "HardDrop",
     Pause: "Pause",
     Quit: "Quit",
-    CounterRotate: "CounterRotate"
+    CounterRotate: "CounterRotate",
+    Hold: "Hold",
 }
 
 export const Key = {
@@ -19,6 +20,7 @@ export const Key = {
     Space: Action.HardDrop,
     KeyZ: Action.CounterRotate,
     KeyX: Action.Rotate,
+    KeyC: Action.Hold,
 };
 
 export const actionIsDrop = (action) => 

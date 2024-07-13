@@ -1,6 +1,7 @@
 import { hasCollision, isWithinBoard } from "./Board"
 import { rotate } from "./Tetrominoes"
 import { Action } from "./Input";
+import { TETROMINOES } from "./Tetrominoes";
 
 const attemptRotation = ({board, player, setPlayer, clockwise}) => {
     const shape = rotate({
@@ -49,7 +50,6 @@ export const movePlayer = ({delta, position, shape, board}) => {
 
     const isMovingDown = delta.row>0;
     const isHit = isMovingDown && (collided || !isOnBoard);
-
     return {collided: isHit, nextPosition};
 };
 
@@ -93,6 +93,26 @@ const attemptMovement = ({
     })
 }
 
+const attempHold=({player, setPlayer})=>{
+    let tetrominoes = player.tetrominoes;
+    if(player.hashold) return;
+    let replace = player.hold;
+    let firsthold = false;
+    if(replace === TETROMINOES["NONE"]){
+        replace = player.tetrominoes[0];
+        tetrominoes = tetrominoes.slice(1)
+    }
+    setPlayer({
+        ...player,
+        hold: player.tetromino,
+        position: { row: 0, column: 3 },
+        firsthold,
+        tetromino: replace,
+        hashold: true,
+        tetrominoes: tetrominoes
+    },[player, setPlayer])
+}
+
 export const playerController = ({
     action,
     board,
@@ -107,5 +127,8 @@ export const playerController = ({
         attemptRotation({board, player, setPlayer, clockwise: -1});
     } else {
         attemptMovement({board, player, setPlayer, action, setGameOver});
+    }
+    if (action === Action.Hold){
+        attempHold({player, setPlayer});
     }
 }
