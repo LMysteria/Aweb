@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-import { randomTetromino, TETROMINOES } from "../function/Tetrominoes";
+import { TETROMINOES, bag7 } from "../function/Tetrominoes";
 
 const buildPlayer = (previous) => {
   let tetrominoes=[];
@@ -8,14 +8,14 @@ const buildPlayer = (previous) => {
 
   if (previous) {
     tetrominoes = [...previous.tetrominoes];
-    tetrominoes.push(randomTetromino());
+    console.log(tetrominoes.length)
+    if (tetrominoes.length <= 5) {
+      tetrominoes = tetrominoes.concat(bag7())
+    }
     hold = previous.hold;
   } else {
-    tetrominoes = Array(5)
-      .fill(0)
-      .map((_) => randomTetromino());
+    tetrominoes = bag7()
     hold = TETROMINOES["NONE"]
-
   }
   const nextTetromino = tetrominoes[0];
   tetrominoes=tetrominoes.slice(1);
